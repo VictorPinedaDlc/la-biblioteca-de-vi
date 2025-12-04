@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Biblioteca de Vi</title>
+
+    <!-- Aquí cargamos los archivos que están al lado de index.html -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <h1>LA BIBLIOTECA DE VI</h1>
+        <p class="subtitle">
+          Historias de suspenso, nostalgia, amor y locuras que aún no se cuentan en voz alta.
+        </p>
+      </div>
+      <button class="badge badge-outline">Victor Pineda</button>
+    </header>
+
+   <main class="catalog">
+  <!-- Sección tipo "hero" arriba -->
+  <div class="hero">
+  <div class="hero-text">
+    <h2>Bienvenido :)</h2>
+    <p>
+      Aquí, cada relato nace para acompañarte; algunos te harán pensar,
+      otros te harán sentir, y todos tienen algo que decirte cuando estés
+      listo para escucharlos. Elige un cuento, siéntate cómodo y deja que
+      la historia haga el resto.
+    </p>
+  </div>
+
+  <div class="hero-logo">
+    <img src="assets/img/logobibli.png" alt="La Biblioteca de Vi">
+  </div>
+</div>
+
+ 
+
+  </section>
+
+  <!-- Fila principal tipo Netflix -->
+  <section class="row">
+    <div class="row-header">
+      <h3 class="row-title">Todos los cuentos</h3>
+
+      <div class="controls">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Buscar por título o palabra clave..."
+        />
+        <select id="genreFilter">
+          <option value="todos">Todos los géneros</option>
+          <option value="suspenso">Suspenso</option>
+          <option value="drama">Drama</option>
+          <option value="romance">Romance</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Aquí JS va a inyectar las "portadas" -->
+    <div id="storiesGrid" class="stories-grid">
+      <!-- tarjetas tipo Netflix generadas por app.js -->
+    </div>
+
+    <p id="noResultsMessage" class="no-results hidden">
+      No se encontraron cuentos con ese criterio.
+    </p>
+  </section>
+</main>
+
+  </div>
+</body>
+</html>

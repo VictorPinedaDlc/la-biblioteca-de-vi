@@ -1,0 +1,582 @@
+/* ---------- RESET BÁSICO ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1b2238, #050712 55%, #020307);
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ---------- APP ---------- */
+.app {
+  max-width: 1180px;
+  margin: 32px auto;
+  padding: 24px 28px 40px;
+  border-radius: 24px;
+  background: radial-gradient(circle at top left, #1b2639 0, #050816 45%, #020308);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+/* ---------- HEADER ---------- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.badge {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+.badge-outline {
+  border-color: rgba(249, 115, 22, 0.6);
+  color: #fed7aa;
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.1), rgba(56, 189, 248, 0.1));
+}
+
+/* ---------- LAYOUT ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 18px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 13px;
+  outline: none;
+}
+
+.filters input::placeholder {
+  color: #6b7280;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+/* Lista de cuentos */
+.story-list {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar */
+.story-list::-webkit-scrollbar,
+.story-detail::-webkit-scrollbar {
+  width: 6px;
+}
+.story-list::-webkit-scrollbar-thumb,
+.story-detail::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+/* Tarjetas */
+.story-card {
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.5), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease,
+    background 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.story-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(249, 115, 22, 0.8);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.75);
+}
+
+.story-card.active {
+  border-color: rgba(251, 146, 60, 0.9);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.7);
+  background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.5), rgba(15, 23, 42, 0.98));
+}
+
+.story-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.story-card-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.story-card-genre {
+  font-size: 11px;
+  color: #e5e7eb;
+  opacity: 0.9;
+}
+
+.story-card-sub {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.story-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* ---------- BADGES ---------- */
+.tag {
+  font-size: 10px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+}
+
+/* ---------- CONTENIDO ---------- */
+.content {
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 16px 18px;
+  min-height: 260px;
+}
+
+.story-detail {
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.story-detail-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.story-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.badge-soft {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #e5e7eb;
+}
+
+.badge-soft-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f97316;
+}
+
+.story-detail-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.story-detail-body p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.story-detail-body p + p {
+  text-indent: 1.2em;
+}
+
+/* Mensaje sin resultados */
+.no-results {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .app {
+    margin: 16px;
+    padding: 18px 16px 24px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- NUEVO DISEÑO TIPO NETFLIX ---------- */
+
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.hero {
+  margin-bottom: 2rem;
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at top left, #1f2933, #020617 60%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  color: #9ca3af;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+/* Fila tipo "row" Netflix */
+
+.row {
+  margin-top: 1rem;
+}
+
+.row-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.row-title {
+  font-size: 1.25rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.controls input,
+.controls select {
+  background: #020617;
+  border-radius: 999px;
+  border: 1px solid #111827;
+  padding: 0.5rem 0.9rem;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.controls input::placeholder {
+  color: #6b7280;
+}
+
+/* Grid de portadas */
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tarjeta individual */
+
+.story-card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #020617, #020617);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  transform: translateY(0);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+}
+
+.story-cover {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.story-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.story-card:hover .story-cover img {
+  transform: scale(1.08);
+  filter: brightness(1.02);
+}
+
+.story-info {
+  padding: 0.75rem 0.9rem 1rem;
+}
+
+.story-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.story-meta {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.story-tags {
+  font-size: 0.75rem;
+  color: #f97316;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-results {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Un poco de responsivo */
+
+@media (max-width: 768px) {
+  .catalog {
+    padding-inline: 1rem;
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .row-header {
+    align-items: flex-start;
+  }
+}
+
+/* Portada grande en la página de cuento */
+.story-cover {
+  width: 100%;
+  max-height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  background: radial-gradient(circle at top, #1f2937, #020617);
+}
+
+.story-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-reader {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Portada grande SOLO en la página de cuento */
+.story-cover-lg {
+  width: 100%;
+  max-height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  background: radial-gradient(circle at top, #1f2937, #020617);
+}
+
+.story-cover-lg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ====== HEADER NUEVO ====== */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 24px 32px 12px;
+}
+
+.brand-main {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.welcome-box {
+  position: relative;
+}
+
+.hero {
+  margin-bottom: 2rem;
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at top left, #1f2933, #020617 60%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+
+  /* NUEVO: organizamos el texto y el logo en fila */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+
+  .hero-logo img {
+    width: 150px;
+  }
+
+.welcome-logo {
+    position: absolute;
+    right: 90px;   /* Ajusta aquí – antes estaba más grande, ahora lo acercamos */
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.92;
+    width: 240px;  /* Tamaño perfecto para tu diseño */
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2.5rem;  /* Reduce un poco el padding vertical */
+  gap: 2rem; /* Acerca el texto al logo */
+}
+
+.hero-logo img {
+  width: 260px;  /* Ajusta el tamaño del logo */
+  opacity: 0.92;
+  transform: translateX(-40px); /* Mueve el logo ligeramente a la izquierda */
+}
+/* Enlace "Volver a los cuentos" */
+.back-link {
+    color: #f97316;      /* naranja */
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.back-link:hover {
+    color: #fb923c;      /* naranja más claro */
+    padding-left: 4px;
+}
+.back-link {
+    cursor: pointer;
+}
+/* Título principal grande y elegante */
+.app-header h1 {
+    font-size: 3rem;       /* MUY grande */
+    font-weight: 700;
+    color: #d9d2c3;        /* color del logo */
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+.story-tags {
+  margin-bottom: 16px; /* separa las etiquetas del cuento */
+}

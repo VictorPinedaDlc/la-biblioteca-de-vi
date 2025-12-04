@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de cuentos – Víctor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos rápidos solo para el panel (encima de tu dark-theme) */
+    .admin-page {
+      max-width: 900px;
+      margin: 40px auto;
+      background: radial-gradient(circle at top, #161b2f, #050814 60%);
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .admin-title {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .admin-subtitle {
+      color: #a4b0d0;
+      margin-bottom: 24px;
+    }
+
+    .admin-form-group {
+      margin-bottom: 16px;
+    }
+
+    .admin-form-group label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: #cfd5f0;
+    }
+
+    .admin-form-group input,
+    .admin-form-group textarea,
+    .admin-form-group select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #28324f;
+      background: #060919;
+      color: #fff;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .admin-form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .admin-helper {
+      font-size: 0.75rem;
+      color: #7f8ab5;
+      margin-top: 4px;
+    }
+
+    .admin-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid #ff8b3d;
+      background: linear-gradient(90deg, #ff8b3d, #ffb347);
+      color: #050814;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .admin-output-title {
+      margin-top: 32px;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    #outputJson {
+      width: 100%;
+      min-height: 220px;
+      background: #02030a;
+      border-radius: 14px;
+      border: 1px solid #28324f;
+      padding: 12px;
+      color: #b7c2ff;
+      font-family: "Consolas", "Fira Code", monospace;
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-page">
+    <h1 class="admin-title">Panel para crear cuentos</h1>
+    <p class="admin-subtitle">
+      Llena este formulario y te generaré el objeto JSON listo para pegar en <code>assets/data/cuentos.json</code>.
+    </p>
+
+    <form id="formNuevoCuento">
+      <div class="admin-form-group">
+        <label for="titulo">Título del cuento</label>
+        <input id="titulo" type="text" required />
+      </div>
+
+      <div class="admin-form-group">
+        <label for="anio">Año</label>
+        <input id="anio" type="number" min="1900" max="2100" value="2025" required />
+      </div>
+
+      <div class="admin-form-group">
+        <label for="genero">Género (lo que se mostrará debajo del año)</label>
+        <input id="genero" type="text" placeholder="Suspenso psicológico, Drama, Romance..." required />
+      </div>
+
+      <div class="admin-form-group">
+        <label for="tags">Etiquetas (separadas por coma)</label>
+        <input id="tags" type="text" placeholder="misterio, soledad, culpa..." />
+        <div class="admin-helper">
+          Ejemplo: <code>misterio, paranormal, culpa</code>
+        </div>
+      </div>
+
+      <div class="admin-form-group">
+        <label for="portada">Ruta de la portada</label>
+        <input id="portada" type="text" placeholder="assets/img/uno-once-cero-tres.jpg" />
+        <div class="admin-helper">
+          Más adelante creas las imágenes en esa carpeta con ese nombre.
+        </div>
+      </div>
+
+      <div class="admin-form-group">
+        <label for="resumen">Resumen corto (para la tarjeta)</label>
+        <textarea id="resumen" placeholder="Una voz repite siempre la misma secuencia cuando él despierta..."></textarea>
+      </div>
+
+      <div class="admin-form-group">
+        <label for="contenido">
+          Contenido completo del cuento (separar párrafos con una línea en blanco)
+        </label>
+        <textarea id="contenido" placeholder="Párrafo 1...
+
+Párrafo 2...
+
+Párrafo 3..."></textarea>
+        <div class="admin-helper">
+          Cada salto de línea en blanco se convertirá en un párrafo diferente.
+        </div>
+      </div>
+
+      <button class="admin-button" type="submit">Generar JSON</button>
+    </form>
+
+    <h2 class="admin-output-title">JSON generado</h2>
+    <p class="admin-helper">
+      Copia este bloque y pégalo dentro del arreglo de <code>assets/data/cuentos.json</code>.
+    </p>
+    <textarea id="outputJson" readonly></textarea>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuento | Cuentos de Victor</title>
+
+  <!-- MIS ESTILOS PRINCIPALES -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- LECTOR DE CUENTO -->
+  <script src="cuento.js" defer></script>
+</head>
+<body class="story-page">
+  <div class="app">
+    <!-- HEADER SUPERIOR -->
+    <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-logo">VP</a>
+        <div class="brand-text">
+          <p class="brand-title">La Biblioteca de Vi</p>
+          <p class="brand-subtitle">Colección personal</p>
+        </div>
+      </div>
+
+     <a href="index.html" class="back-link">← Volver a los cuentos</a>
+
+
+    </header>
+
+    <!-- CONTENIDO DEL CUENTO -->
+    <main class="story-layout">
+      <article class="story-reader">
+        <!-- TÍTULO Y META -->
+        <header class="story-header">
+          <h1 id="storyTitle">Cuento</h1>
+          <p id="storyMeta" class="subtitle"></p>
+        </header>
+
+        <!-- PORTADA GRANDE -->
+        <div class="story-cover-wrapper">
+  <img
+    id="storyCover"
+    class="story-cover-lg"
+    src=""
+    alt="Portada del cuento"
+  />
+</div>
+
+
+        <!-- CUERPO DEL CUENTO -->
+        <section class="story-body">
+          <div id="storyTags" class="story-tags"></div>
+
+          
+          <div id="storyContent" class="story-text">
+            <!-- Aquí se inyectarán los párrafos -->
+          </div>
+        </section>
+      </article>
+
+      <!-- MENSAJE SI NO SE ENCUENTRA EL CUENTO -->
+      <div id="storyNotFound" class="story-not-found hidden">
+        Cuento no encontrado.
+      </div>
+    </main>
+  </div>
+</body>
+</html>
