@@ -302,17 +302,23 @@ body {
   border-radius: 1.5rem;
   background: radial-gradient(circle at top left, #1f2933, #020617 60%);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+
+  /* NUEVO: diseño en fila para pantallas grandes */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
 }
 
-.hero-text h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.hero-text {
+  flex: 1 1 320px;
 }
 
-.hero-text p {
-  color: #9ca3af;
-  max-width: 480px;
-  line-height: 1.5;
+.hero-logo img {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
 }
 
 /* Fila tipo "row" Netflix */
@@ -439,18 +445,32 @@ body {
 /* Un poco de responsivo */
 
 @media (max-width: 768px) {
-  .catalog {
-    padding-inline: 1rem;
-  }
-
+  /* Hero en una sola columna */
   .hero {
-    padding: 1.5rem;
+    flex-direction: column;      /* texto arriba, logo abajo */
+    align-items: flex-start;     /* alinear al inicio */
+    padding: 1.75rem 1.5rem;
+    gap: 1.5rem;
   }
 
-  .row-header {
-    align-items: flex-start;
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-logo {
+    align-self: center;          /* centrar el logo en el bloque */
+  }
+
+  .hero-logo img {
+    max-width: 70vw;             /* que no sea tan grande en celu */
+  }
+
+  /* Opcional: hacer un poco más pequeño el título grande de arriba */
+  .app-header h1 {
+    font-size: 1.9rem;
   }
 }
+
 
 /* Portada grande en la página de cuento */
 .story-cover {
