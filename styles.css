@@ -444,85 +444,86 @@ body {
 
 /* Un poco de responsivo */
 
-/* ------------------------------------------- */
-/* RESPONSIVE — MODO CELULAR (pantallas pequeñas)
-/* ------------------------------------------- */
+/* --------- RESPONSIVO HERO (MÓVIL) --------- */
+@media (max-width: 768px) {
 
-@media screen and (max-width: 768px) {
+  /* Contenedor general */
+  .catalog {
+    padding: 1.5rem 1rem 2.5rem;
+  }
 
-    /* Hero en columna */
-    .hero {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1.5rem 1rem;
-        gap: 1.5rem;
-    }
+  /* Hero en columna */
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem 1.5rem;
+    gap: 1.5rem;
+  }
 
-    .hero-text {
-        max-width: 100%;
-        text-align: left;  /* si quieres centrado, pon center */
-    }
+  .hero-text h2 {
+    font-size: 1.7rem;
+    margin-bottom: 0.75rem;
+  }
 
-    /* Logo centrado y más pequeño */
-    .hero-logo {
-        align-self: center;
-    }
+  .hero-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 
-    .hero-logo img {
-        max-width: 65vw; /* tamaño ideal para celular */
-    }
+  /* Logo centrado debajo del texto */
+  .hero-logo {
+    align-self: center;
+  }
 
-    /* Ajustar el título grande */
-    .app-header h1 {
-        font-size: 1.9rem;
-        line-height: 2.2rem;
+  .hero-logo img {
+    display: block;
+    max-width: 65vw;
+    height: auto;
+  }
+
+  /* Título grande de arriba un poco más chico en cel */
+  .app-header h1 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
+/* ==== PORTADA GRANDE EN LA PÁGINA DE CUENTO ==== */
+
+.story-cover-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    border-radius: 24px;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #1f2937, #020617);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+}
+
+/* Imagen de la portada */
+.story-cover-lg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* En celulares, que la portada NO se recorte */
+@media (max-width: 768px) {
+    .story-cover-lg {
+        max-height: none;  /* antes estaba limitada a 320px */
     }
 }
 
-
-
-/* Portada grande en la página de cuento */
-.story-cover {
-  width: 100%;
-  max-height: 320px;
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-  background: radial-gradient(circle at top, #1f2937, #020617);
-}
-
-.story-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+/* Contenedor de la lectura del cuento */
 .story-reader {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Portada grande SOLO en la página de cuento */
-.story-cover-lg {
-  width: 100%;
-  max-height: 320px;
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-  background: radial-gradient(circle at top, #1f2937, #020617);
-}
 
-.story-cover-lg {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+
+
 
 /* ====== HEADER NUEVO ====== */
 
@@ -543,47 +544,7 @@ body {
   position: relative;
 }
 
-.hero {
-  margin-bottom: 2rem;
-  padding: 2rem 2.5rem;
-  border-radius: 1.5rem;
-  background: radial-gradient(circle at top left, #1f2933, #020617 60%);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
 
-  /* NUEVO: organizamos el texto y el logo en fila */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
-}
-
-
-  .hero-logo img {
-    width: 150px;
-  }
-
-.welcome-logo {
-    position: absolute;
-    right: 90px;   /* Ajusta aquí – antes estaba más grande, ahora lo acercamos */
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.92;
-    width: 240px;  /* Tamaño perfecto para tu diseño */
-}
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 3rem 2.5rem;  /* Reduce un poco el padding vertical */
-  gap: 2rem; /* Acerca el texto al logo */
-}
-
-.hero-logo img {
-  width: 260px;  /* Ajusta el tamaño del logo */
-  opacity: 0.92;
-  transform: translateX(-40px); /* Mueve el logo ligeramente a la izquierda */
-}
 /* Enlace "Volver a los cuentos" */
 .back-link {
     color: #f97316;      /* naranja */
